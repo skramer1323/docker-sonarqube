@@ -12,14 +12,12 @@ USER root
 
 RUN chgrp -R 0 /opt \
  && chmod -R g+rwX /opt
- 
-RUN chown -R sonarqube:sonarqube $SONARQUBE_HOME
-
-ADD run.sh /opt/sonarqube/bin/run.sh
-
-CMD /opt/sonarqube/bin/run.sh
 
 RUN chown root:root /opt/sonarqube -R; \
     chmod 6775 /opt/sonarqube -R
     
+ADD run.sh /opt/sonarqube/bin/run.sh
+
+CMD /opt/sonarqube/bin/run.sh
+  
 USER 1001
