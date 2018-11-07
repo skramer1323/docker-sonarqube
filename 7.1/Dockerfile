@@ -52,6 +52,4 @@ WORKDIR $SONARQUBE_HOME
 
 COPY run.sh $SONARQUBE_HOME/bin/
 
-USER 1001
-
 ENTRYPOINT ["/opt/sonarqube/bin/run.sh"]
