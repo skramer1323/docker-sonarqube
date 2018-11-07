@@ -25,9 +25,7 @@ RUN set -x \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
     && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu \
-    && gosu nobody true
- RUN ls -lah  /usr/local/bin/ | grep gosu
-    
+    && gosu nobody true   
 RUN set -x \
     # pub   2048R/D26468DE 2015-05-25
     #       Key fingerprint = F118 2E81 C792 9289 21DB  CAB4 CFCA 4A29 D264 68DE
@@ -52,4 +50,6 @@ WORKDIR $SONARQUBE_HOME
 
 COPY run.sh $SONARQUBE_HOME/bin/
 
+RUN chown -R sonarqube:sonarqube $SONARQUBE_HOME
+USER sonarqube
 ENTRYPOINT ["/opt/sonarqube/bin/run.sh"]
