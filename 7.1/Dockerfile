@@ -49,7 +49,7 @@ VOLUME "$SONARQUBE_HOME/data"
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
 
-RUN chgrp -R 0 $SONARQUBE_HOME \
- && chmod -R g+rwX $SONARQUBE_HOME
+RUN chgrp -R 0 /opt \
+ && chmod -R g+rwX /opt
  
 ENTRYPOINT ["./bin/run.sh"]
