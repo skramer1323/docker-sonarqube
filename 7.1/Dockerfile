@@ -9,14 +9,17 @@ ENV SONAR_VERSION=7.1 \
     SONARQUBE_JDBC_URL=$JDBC_URL
 
 USER root
+
 RUN chgrp -R 0 /opt \
  && chmod -R g+rwX /opt
  
+RUN chown -R sonarqube:sonarqube $SONARQUBE_HOME
+
 ADD run.sh /opt/sonarqube/bin/run.sh
+
 CMD /opt/sonarqube/bin/run.sh
+
 RUN chown root:root /opt/sonarqube -R; \
     chmod 6775 /opt/sonarqube -R
-RUN chgrp -R 0 /opt \
- && chmod -R g+rwX /opt
-
+    
 USER 1001
