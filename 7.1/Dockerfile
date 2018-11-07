@@ -9,7 +9,7 @@ ENV SONAR_VERSION=7.1 \
     SONARQUBE_JDBC_URL=$JDBC_URL
     
 RUN chgrp -R 0 /opt \
- && chmod -R g+rwX /opt
+ && chmod -R a+rwX /opt
 # Http port
 EXPOSE 9000
 
@@ -52,8 +52,8 @@ WORKDIR $SONARQUBE_HOME
 
 COPY run.sh $SONARQUBE_HOME/bin/
 
-#RUN chown root:root /opt/sonarqube -R; \
-#    chmod 6775 /opt/sonarqube -R
+RUN chown root:root /opt/sonarqube -R; \
+    chmod 6777 /opt/sonarqube -R
     
 USER 1001
 
