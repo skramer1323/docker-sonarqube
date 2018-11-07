@@ -52,9 +52,11 @@ WORKDIR $SONARQUBE_HOME
 
 COPY run.sh $SONARQUBE_HOME/bin/
 
-RUN chown root:root /opt/sonarqube -R; \
-    chmod 6777 /opt/sonarqube -R
-    
+#RUN chown root:root /opt/sonarqube -R; \
+#    chmod 6777 /opt/sonarqube -R
+RUN chown sonarqube:sonarqube $SONARQUBE_HOME -R; \
+    chmod 6777 $SONARQUBE_HOME -R
+
 USER 1001
 
 ENTRYPOINT ["/opt/sonarqube/bin/run.sh"]
