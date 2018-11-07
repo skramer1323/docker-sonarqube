@@ -24,10 +24,9 @@ RUN set -x \
         || gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4) \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
     && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
-#    && chmod +x /usr/local/bin/gosu \
-    && chmod 6755 /usr/local/bin/gosu \
+    && chown root:users /usr/local/bin/gosu \
+    && chmod +x /usr/local/bin/gosu \
     && gosu nobody true
-
 RUN set -x \
 
     # pub   2048R/D26468DE 2015-05-25
