@@ -1,4 +1,7 @@
 FROM sonarqube:latest
+ENV SONARQUBE_JDBC_USERNAME=$JDBC_USERNAME \
+    SONARQUBE_JDBC_PASSWORD=$JDBC_PASSWORD \
+    SONARQUBE_JDBC_URL=$JDBC_URL
 
 USER root
 ADD run.sh /opt/sonarqube/bin/run.sh
