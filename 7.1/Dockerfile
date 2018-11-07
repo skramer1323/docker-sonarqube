@@ -1,5 +1,10 @@
 FROM sonarqube:latest
-ENV SONARQUBE_JDBC_USERNAME=$JDBC_USERNAME \
+
+ENV SONAR_VERSION=7.1 \
+    SONARQUBE_HOME=/opt/sonarqube \
+    # Database configuration
+    # Defaults to using H2
+    SONARQUBE_JDBC_USERNAME=$JDBC_USERNAME \
     SONARQUBE_JDBC_PASSWORD=$JDBC_PASSWORD \
     SONARQUBE_JDBC_URL=$JDBC_URL
 
